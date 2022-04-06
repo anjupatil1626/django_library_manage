@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+<a href="{% url 'bookadd' %}"><button type="button" class="btn btn-danger">AddBook</button></a>
+<table class="table table-striped">
+     <thead>
+          <tr>
+          <th>Book_Name</th>
+          <th>Author_Name</th>
+          <th>ISBN</th>
+          <th>Quantity</th>
+          <th>Category</th>
+          </tr>
+      </thead>
+      <tbody>
+          {% if bd %}
+          {% for i in bd %}
+      <tr>
+          <td>{{i.book_name}}</td>
+          <td>{{i.author}}</td>
+          <td>{{i.isbn}}</td>
+          <td>{{i.quantity}}</td>
+          <td>{{i.category}}</td>
+          <td>
+              <form action="{% url 'delete' i.id %}" method="post">
+                  {% csrf_token %}
+                  <input type="submit"  class="bg-danger text-white" value="delete">
+              </form>
+          </td>
+          <td>
+        <a href="{% url 'update' i.id %}"><button type="button" class="btn btn-warning">Edit</a>
+          </td>
+      </tr>
+      {% endfor %}
+      {% endif %}
+       </tbody>
+    </table>
+  </div>
+{% endblock content%}

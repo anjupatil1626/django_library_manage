@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+        <div class="row my-4">
+            <div class="col">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <input type="submit" value="addbook">
+                </form>
+            </div>
+        </div>
+<a href="{% url 'info' %}"><button type="button" class="btn btn-danger">Back</button></a>
+{% endblock content%}

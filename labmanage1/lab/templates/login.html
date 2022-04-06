@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row my-4">
+  <div class="col"></div>
+  <div class="col">
+    <h4 class="text-danger">Login Here</h4>
+    {% if messages %}
+{% for message in messages %}
+<p {% if message.tags %} class="alert alert-{{message.tags}} mb-5{% endif %}>{{message}}"></p>
+    {% endfor %}
+    {% endif %}
+    <form action="" method="post">
+      {% csrf_token %}
+      {% for fm in form %}
+      <div class="form-group">
+    {{fm.label_tag}}{{fm}}{{fm.errors|striptags}}
+    </div>
+      {% endfor %}
+      <br>
+      <input type="submit" value="submit">
+      {% if form.non_field_errors %}
+      {% for error in form.non_field_errors %}
+      <p class="alert alert-danger my-3">{{error}}</p>
+      {% endfor %}
+      {% endif %}
+  </div>
+</div>
+{% endblock content%}

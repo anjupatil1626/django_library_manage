@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+<h4 class="text-danger text-center">Records of Books </h4>
+<br>
+<table class="table table-striped">
+  <thead>
+       <tr>
+       <th>Book_Name</th>
+       <th>Author_Name</th>
+       <th>ISBN</th>
+       <th>Quantity</th>
+       <th>Category</th>
+       </tr>
+   </thead>
+   <tbody>
+       {% if bd %}
+       {% for i in bd %}
+   <tr>
+       <td>{{i.book_name}}</td>
+       <td>{{i.author}}</td>
+       <td>{{i.isbn}}</td>
+       <td>{{i.quantity}}</td>
+       <td>{{i.category}}</td>
+   </tr>
+   {% endfor %}
+   {% endif %}
+    </tbody>
+ </table>
+</div>
+{% endblock content%}
